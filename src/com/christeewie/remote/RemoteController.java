@@ -13,22 +13,15 @@ public class RemoteController {
 
 
     // Handle user input
-    public void handler() {
-        Scanner scan = new Scanner(System.in);
-
-
-        if (scan.hasNextLine()) {
-            if (scan.hasNextInt()) {
-                switch (scan.nextInt()) {
-                    case 0 -> usedRemote.powerTv();
-                    case 1 -> usedRemote.volUp();
-                    case 2 -> usedRemote.volDown();
-                    case 3 -> usedRemote.channelUp();
-                    case 4 -> usedRemote.channelDown();
-                    case 9 -> usedRemote.switchBat();
-                    default -> System.out.println("Unknown Command");
-                }
-            }
+    public void handler(Integer nextInt) {
+        switch (nextInt) {
+            case 0 -> usedRemote.powerTv();
+            case 1 -> usedRemote.volUp();
+            case 2 -> usedRemote.volDown();
+            case 3 -> usedRemote.channelUp();
+            case 4 -> usedRemote.channelDown();
+            case 9 -> usedRemote.switchBat();
+            default -> System.out.println("Unknown Command");
         }
     }
 }

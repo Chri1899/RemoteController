@@ -2,6 +2,8 @@ import com.christeewie.remote.Remote;
 import com.christeewie.remote.RemoteController;
 import com.christeewie.tv.Tv;
 
+import java.util.Scanner;
+
 public class RemoteControl {
     boolean running;
 
@@ -21,15 +23,34 @@ public class RemoteControl {
         Remote myRemote = new Remote(myTv);
         RemoteController remoteController = new RemoteController(myRemote);
 
-        System.out.println("Remote Controll Program");
+        System.out.println("Remote Control Program");
 
         // Main Loop
         while (r.running) {
+            String nextLine = "";
             r.printer(myTv, myRemote);
             System.out.print("> ");
-            remoteController.handler();
-        }
 
+            Scanner scan = new Scanner(System.in);
+
+            if (scan.hasNextLine()) {
+                nextLine = scan.nextLine();
+            }
+
+            int numericInp;
+
+            if (nextLine.equals("Exit")) {
+                r.running = false;
+                break;
+            } else {
+                try {
+                    numericInp = Integer.parseInt(nextLine);
+                    remoteController.handler(numericInp);
+                } catch (NumberFormatException e) {
+                    System.out.println(e);
+                }
+            }
+        }
     }
 
     // Print Object Layouts
