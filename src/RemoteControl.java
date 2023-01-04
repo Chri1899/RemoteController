@@ -58,9 +58,4 @@ public class RemoteControl {
         tv.printTv();
         remote.printRemote();
     }
-
-    // TODO Exit Program
-    public void exitProgram() {
-        this.running = false;
-    }
 }
